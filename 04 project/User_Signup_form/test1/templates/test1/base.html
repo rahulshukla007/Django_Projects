@@ -1,0 +1,39 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="{%static 'test1/main.css' %}">
+
+    {% if title %}
+    <title>Django Blog - {{title}} </title>
+    {% else %}
+    <title>Django Blog</title>
+    {% endif %}
+
+</head>
+<body>
+    <ul class="ul-header">
+      <li><a class="active" href="{% url 'test-home' %}">Home</a></li>
+      <li><a href="{% url 'test-about'%}">About</a></li>
+      <li style="float:right"><a href="#">Sign-Up </a></li>
+      <li style="float:right"><a href="#">Login</a></li>
+    </ul>
+
+    <div >
+      {% if messages %}
+      {% for message in messages %}
+      <div >
+        {{message}}
+      </div>
+      {% endfor %}
+      {% endif %}
+
+    </div>
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+</body>
+</html>
